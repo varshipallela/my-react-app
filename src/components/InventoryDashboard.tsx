@@ -206,7 +206,7 @@ const InventoryDashboard: React.FC = () => {
           </Card>
         </Col>
       </Row>
-    </div>
+    // </div>
   );
 };
 

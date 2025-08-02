@@ -45,7 +45,6 @@ const expiringItemsData = [
 
 const InventoryStockUsage: React.FC = () => {
   return (
-    <Layout style={{ minHeight: '100vh', padding: '24px', background: '#f8f9fb' }}>
       <Content>
         <Title level={2}>Stock Usage & Expiry Patterns</Title>
 
@@ -106,7 +105,6 @@ const InventoryStockUsage: React.FC = () => {
           </Col>
         </Row>
       </Content>
-    </Layout>
   );
 };
 
