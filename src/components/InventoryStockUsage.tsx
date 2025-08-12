@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Layout, Typography, Table, Card, Row, Col } from 'antd';
 import {
@@ -45,66 +46,67 @@ const expiringItemsData = [
 
 const InventoryStockUsage: React.FC = () => {
   return (
-      <Content>
-        <Title level={2}>Stock Usage & Expiry Patterns</Title>
+    <Content style={{ padding: '24px' }}>
+      <Title level={2}>Stock Usage & Expiry Patterns</Title>
 
-        <Row gutter={[16, 16]}>
-          <Col xs={24} md={12}>
-            <Card title="Usage Trend" bordered>
-              <ResponsiveContainer width="100%" height={250}>
-                <LineChart data={usageTrendData}>
-                  <XAxis dataKey="date" />
-                  <YAxis />
-                  <Tooltip />
-                  <Line type="monotone" dataKey="value" stroke="#1890ff" strokeWidth={3} dot={{ r: 4 }} />
-                </LineChart>
-              </ResponsiveContainer>
-            </Card>
-          </Col>
+      <Row gutter={[16, 16]}>
+        <Col xs={24} md={12}>
+          <Card title="Usage Trend" bordered style={{ height: 350 }}>
+            <ResponsiveContainer width="100%" height={250}>
+              <LineChart data={usageTrendData}>
+                <XAxis dataKey="date" />
+                <YAxis />
+                <Tooltip />
+                <Line type="monotone" dataKey="value" stroke="#1890ff" strokeWidth={3} dot={{ r: 4 }} />
+              </LineChart>
+            </ResponsiveContainer>
+          </Card>
+        </Col>
 
-          <Col xs={24} md={12}>
-            <Card title="Top Consumed Items" bordered>
-              <ResponsiveContainer width="100%" height={250}>
-                <BarChart layout="vertical" data={consumedItemsData}>
-                  <XAxis type="number" />
-                  <YAxis type="category" dataKey="name" />
-                  <Tooltip />
-                  <Bar dataKey="value" fill="#1e3a8a" barSize={25} />
-                </BarChart>
-              </ResponsiveContainer>
-            </Card>
-          </Col>
+        <Col xs={24} md={12}>
+          <Card title="Top Consumed Items" bordered style={{ height: 350 }}>
+            <ResponsiveContainer width="100%" height={250}>
+              <BarChart layout="vertical" data={consumedItemsData}>
+                <XAxis type="number" />
+                <YAxis type="category" dataKey="name" />
+                <Tooltip />
+                <Bar dataKey="value" fill="#1e3a8a" barSize={25} />
+              </BarChart>
+            </ResponsiveContainer>
+          </Card>
+        </Col>
 
-          <Col xs={24} md={12}>
-            <Card title="Expiry Risk" bordered>
-              <ResponsiveContainer width="80%" height={250}>
-                <BarChart data={expiryRiskData}>
-                  <XAxis dataKey="label" />
-                  <YAxis />
-                  <Tooltip />
-                  <Legend />
-                  <Bar dataKey="value">
-                    {expiryRiskData.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={entry.color} />
-                    ))}
-                  </Bar>
-                </BarChart>
-              </ResponsiveContainer>
-            </Card>
-          </Col>
+        <Col xs={24} md={12}>
+          <Card title="Expiry Risk" bordered style={{ height: 350 }}>
+            <ResponsiveContainer width="100%" height={250}>
+              <BarChart data={expiryRiskData}>
+                <XAxis dataKey="label" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Bar dataKey="value">
+                  {expiryRiskData.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={entry.color} />
+                  ))}
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+          </Card>
+        </Col>
 
-          <Col xs={24} md={12}>
-            <Card title="Expiring Items" bordered>
-              <Table
-                columns={expiringItemsColumns}
-                dataSource={expiringItemsData}
-                pagination={{ pageSize: 2 }}
-                size="middle"
-              />
-            </Card>
-          </Col>
-        </Row>
-      </Content>
+        <Col xs={24} md={12}>
+          <Card title="Expiring Items" bordered style={{ height: 350, overflowY: 'auto' }}>
+            <Table
+              columns={expiringItemsColumns}
+              dataSource={expiringItemsData}
+              pagination={{ pageSize: 2 }}
+              size="middle"
+              scroll={{ y: 200 }}
+            />
+          </Card>
+        </Col>
+      </Row>
+    </Content>
   );
 };
 

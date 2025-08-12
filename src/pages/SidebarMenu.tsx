@@ -1,45 +1,98 @@
-
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { UserOutlined } from '@ant-design/icons';
+import {
+  UserOutlined,
+  DashboardOutlined,
+  AppstoreOutlined,
+  BarChartOutlined,
+} from '@ant-design/icons';
 
 const SidebarMenu: React.FC = () => {
   const location = useLocation();
-  const [inventoryOpen, setInventoryOpen] = useState(false); 
+  const [inventoryOpen, setInventoryOpen] = useState(false);
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 
-  const toggleInventory = () => {
-    setInventoryOpen(!inventoryOpen);
-  };
+  const toggleInventory = () => setInventoryOpen(!inventoryOpen);
 
   const selectedKey = location.pathname;
 
-  return (
-    <div style={{
-      width: 350,
-      minHeight: '100vh',
-      backgroundColor: 'lightgray',
-      borderRight: '1px solid #e0e0e0',
-      paddingTop: '1px'
-    }}>
+  const menuItemStyle = (path: string) => ({
+    display: 'flex',
+    alignItems: 'center',
+    padding: '14px 16px',
+    color:
+      selectedKey === path
+        ? '#28c76f'
+        : hoveredItem === path
+        ? '#28c76f'
+        : '#333',
+    fontWeight: selectedKey === path ? 'bold' : 600,
+    textDecoration: 'none',
+    borderLeft:
+      selectedKey === path || hoveredItem === path
+        ? '4px solid #28c76f'
+        : '4px solid transparent',
+    backgroundColor:
+      selectedKey === path || hoveredItem === path ? '#f5fff9' : 'transparent',
+    transition: 'all 0.2s ease',
+  });
 
-      {/* === Manual Menu Title === */}
+  return (
+    <div
+      style={{
+        width: '100%',
+        height: '100%',
+        minHeight: '100vh',
+        backgroundColor: 'white',
+        borderRight: '1px solid #e0e0e0',
+        paddingTop: '1px',
+      }}
+    >
       <div
         style={{
           padding: '16px 20px 8px',
           fontWeight: 'bold',
           fontSize: '25px',
-          color: '#111'
+          color: '#111',
         }}
       >
         Menu
       </div>
 
-      {/* === Inventory Management Header === */}
+      <Link
+        to="/dashboard"
+        style={menuItemStyle('/dashboard')}
+        onMouseEnter={() => setHoveredItem('/dashboard')}
+        onMouseLeave={() => setHoveredItem(null)}
+      >
+        <DashboardOutlined style={{ marginRight: 8 }} />
+        Dashboard
+      </Link>
+
+      <Link
+        to="/reports"
+        style={menuItemStyle('/reports')}
+        onMouseEnter={() => setHoveredItem('/reports')}
+        onMouseLeave={() => setHoveredItem(null)}
+      >
+        <BarChartOutlined style={{ marginRight: 8 }} />
+        Reports
+      </Link>
+
+      <Link
+        to="/applications"
+        style={menuItemStyle('/applications')}
+        onMouseEnter={() => setHoveredItem('/applications')}
+        onMouseLeave={() => setHoveredItem(null)}
+      >
+        <AppstoreOutlined style={{ marginRight: 8 }} />
+        Applications
+      </Link>
+
       <div
         onClick={toggleInventory}
         style={{
-          backgroundColor: '#28c76f',
-          color: '#fff',
+          color: '#000',
           fontWeight: 'bold',
           padding: '14px 16px',
           display: 'flex',
@@ -49,39 +102,39 @@ const SidebarMenu: React.FC = () => {
         }}
       >
         <UserOutlined style={{ marginRight: 8 }} />
-        Inventory Management
+        Manage Inventory 
         <span style={{ marginLeft: 'auto', fontSize: 18 }}>
           {inventoryOpen ? '–' : '+'}
         </span>
       </div>
 
-      {/* === Sub-items === */}
       {inventoryOpen && (
         <div style={{ padding: '12px 24px', fontWeight: 600 }}>
           <Link
             to="/inventory"
-            style={{
-              display: 'block',
-              padding: '8px 0',
-              color: selectedKey === '/inventory' ? '#1e295f' : '#333',
-              fontWeight: selectedKey === '/inventory' ? 'bold' : 500,
-              textDecoration: 'none'
-            }}
+            style={menuItemStyle('/inventory')}
+            onMouseEnter={() => setHoveredItem('/inventory')}
+            onMouseLeave={() => setHoveredItem(null)}
           >
             Inventory Management Report
           </Link>
 
           <Link
             to="/inventory/stock-usage"
-            style={{
-              display: 'block',
-              padding: '8px 0',
-              color: selectedKey === '/inventory/stock-usage' ? '#1e295f' : '#333',
-              fontWeight: selectedKey === '/inventory/stock-usage' ? 'bold' : 500,
-              textDecoration: 'none'
-            }}
+            style={menuItemStyle('/inventory/stock-usage')}
+            onMouseEnter={() => setHoveredItem('/inventory/stock-usage')}
+            onMouseLeave={() => setHoveredItem(null)}
           >
             Stock Usage and Expiry Patterns
+          </Link>
+
+          <Link
+            to="/inventory/maintenance"
+            style={menuItemStyle('/inventory/maintenance')}
+            onMouseEnter={() => setHoveredItem('/inventory/maintenance')}
+            onMouseLeave={() => setHoveredItem(null)}
+          >
+            Maintenance Inventory
           </Link>
         </div>
       )}

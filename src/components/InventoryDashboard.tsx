@@ -129,6 +129,7 @@ const InventoryDashboard: React.FC = () => {
           <BarChart
             data={weeklyUsageData}
             margin={{ top: 20, right: 20, bottom: 50, left: 20 }}
+              style={{ background: "none" }}
           >
             <XAxis
               dataKey="name"
