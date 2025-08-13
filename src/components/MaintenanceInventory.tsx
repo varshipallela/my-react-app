@@ -108,9 +108,9 @@ const MaintenanceInventory: React.FC = () => {
   ];
 
   return (
-    <div style={{ padding: 24, width: "1200px"}}>
+    <div style={{ padding: 16 }}>
       {/* Header */}
-      <Row justify="space-between" align="middle" style={{ marginBottom: 20 }}>
+      <Row justify="space-between" align="middle" style={{ marginBottom: 16 }}>
         <Col>
           <Title level={2} style={{ margin: 0 }}>
             <ToolOutlined /> Maintenance Inventory
@@ -124,26 +124,26 @@ const MaintenanceInventory: React.FC = () => {
       </Row>
 
       {/* Stats Cards */}
-      <Row gutter={16} style={{ marginBottom: 20 }}>
+      <Row gutter={12} style={{ marginBottom: 16 }}>
         <Col span={6}>
           <Card
             style={{
               background: "linear-gradient(135deg, #2c3e50, #4ca1af)",
               color: "white",
-              height: 170,
-              borderRadius: 12
+              height: 120,
+              borderRadius: 8
             }}
             bodyStyle={{
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              justifyContent: "center"
+              justifyContent: "center",
+              padding: "12px"
             }}
           >
-            <AppstoreOutlined style={{ fontSize: 40, marginBottom: 8 }} />
-                        <div style={{ fontSize: 26, fontWeight: "bold" }}>Total Items</div>
-
-            <div style={{ fontSize: 38, fontWeight: "bold" }}>{data.length}</div>
+            <AppstoreOutlined style={{ fontSize: 24, marginBottom: 4 }} />
+            <div style={{ fontSize: 12, fontWeight: "bold" }}>Total Items</div>
+            <div style={{ fontSize: 24, fontWeight: "bold" }}>{data.length}</div>
           </Card>
         </Col>
         <Col span={6}>
@@ -151,20 +151,20 @@ const MaintenanceInventory: React.FC = () => {
             style={{
               background: "linear-gradient(135deg, #1d976c, #93f9b9)",
               color: "white",
-              height: 170,
-              borderRadius: 12
+              height: 120,
+              borderRadius: 8
             }}
             bodyStyle={{
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              justifyContent: "center"
+              justifyContent: "center",
+              padding: "12px"
             }}
           >
-            <CheckCircleOutlined style={{ fontSize: 40, marginBottom: 8 }} />
-                        <div style={{ fontSize: 26, fontWeight: "bold" }}>Available</div>
-
-            <div style={{ fontSize: 38, fontWeight: "bold" }}>
+            <CheckCircleOutlined style={{ fontSize: 24, marginBottom: 4 }} />
+            <div style={{ fontSize: 12, fontWeight: "bold" }}>Available</div>
+            <div style={{ fontSize: 24, fontWeight: "bold" }}>
               {data.filter(item => item.status === "Available").length}
             </div>
           </Card>
@@ -174,20 +174,20 @@ const MaintenanceInventory: React.FC = () => {
             style={{
               background: "linear-gradient(135deg, #42275a, #734b6d)",
               color: "white",
-              height: 170,
-              borderRadius: 12
+              height: 120,
+              borderRadius: 8
             }}
             bodyStyle={{
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              justifyContent: "center"
+              justifyContent: "center",
+              padding: "12px"
             }}
           >
-            <SettingOutlined style={{ fontSize: 40, marginBottom: 8 }} />
-                        <div style={{ fontSize: 26, fontWeight: "bold" }}>Under Repair</div>
-
-            <div style={{ fontSize: 38, fontWeight: "bold" }}>
+            <SettingOutlined style={{ fontSize: 24, marginBottom: 4 }} />
+            <div style={{ fontSize: 12, fontWeight: "bold" }}>Under Repair</div>
+            <div style={{ fontSize: 24, fontWeight: "bold" }}>
               {data.filter(item => item.status === "Under Repair").length}
             </div>
           </Card>
@@ -197,20 +197,20 @@ const MaintenanceInventory: React.FC = () => {
             style={{
               background: "linear-gradient(135deg, #ff512f, #dd2476)",
               color: "white",
-              height: 170,
-              borderRadius: 12
+              height: 120,
+              borderRadius: 8
             }}
             bodyStyle={{
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              justifyContent: "center"
+              justifyContent: "center",
+              padding: "12px"
             }}
           >
-            <WarningOutlined style={{ fontSize: 40, marginBottom: 8 }} />
-                        <div style={{ fontSize: 26, fontWeight: "bold" }}>Low Stock</div>
-
-            <div style={{ fontSize: 38, fontWeight: "bold" }}>
+            <WarningOutlined style={{ fontSize: 24, marginBottom: 4 }} />
+            <div style={{ fontSize: 12, fontWeight: "bold" }}>Low Stock</div>
+            <div style={{ fontSize: 24, fontWeight: "bold" }}>
               {data.filter(item => item.quantity < 5).length}
             </div>
           </Card>
@@ -234,7 +234,7 @@ const MaintenanceInventory: React.FC = () => {
           </Button>
         </Col>
       </Row> */}
-      <Row gutter={16} style={{ marginBottom: 30 }}>
+      <Row gutter={12} style={{ marginBottom: 16 }}>
   {/* Search Bar */}
   <Col flex="auto">
     <Input
@@ -262,7 +262,17 @@ const MaintenanceInventory: React.FC = () => {
          
 
       {/* Table */}
-      <Table columns={columns} dataSource={filteredData} rowKey="id" />
+      <Table 
+        columns={columns} 
+        dataSource={filteredData} 
+        rowKey="id" 
+        size="small"
+        pagination={{
+          pageSize: 10,
+          showSizeChanger: true,
+          showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`,
+        }}
+      />
 
       {/* Add/Edit Modal */}
       <Modal

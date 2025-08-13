@@ -109,10 +109,40 @@ const SidebarMenu: React.FC = () => {
       </div>
 
       {inventoryOpen && (
-        <div style={{ padding: '12px 24px', fontWeight: 600 }}>
+        <div style={{ padding: '8px 16px', fontWeight: 600 }}>
+          <Link
+            to="/inventory/categories"
+            style={{
+              ...menuItemStyle('/inventory/categories'),
+              padding: '8px 12px',
+              fontSize: '14px'
+            }}
+            onMouseEnter={() => setHoveredItem('/inventory/categories')}
+            onMouseLeave={() => setHoveredItem(null)}
+          >
+            Manage Categories
+          </Link>
+
+          <Link
+            to="/inventory/items"
+            style={{
+              ...menuItemStyle('/inventory/items'),
+              padding: '8px 12px',
+              fontSize: '14px'
+            }}
+            onMouseEnter={() => setHoveredItem('/inventory/items')}
+            onMouseLeave={() => setHoveredItem(null)}
+          >
+            Manage Items
+          </Link>
+
           <Link
             to="/inventory"
-            style={menuItemStyle('/inventory')}
+            style={{
+              ...menuItemStyle('/inventory'),
+              padding: '8px 12px',
+              fontSize: '14px'
+            }}
             onMouseEnter={() => setHoveredItem('/inventory')}
             onMouseLeave={() => setHoveredItem(null)}
           >
@@ -121,7 +151,11 @@ const SidebarMenu: React.FC = () => {
 
           <Link
             to="/inventory/stock-usage"
-            style={menuItemStyle('/inventory/stock-usage')}
+            style={{
+              ...menuItemStyle('/inventory/stock-usage'),
+              padding: '8px 12px',
+              fontSize: '14px'
+            }}
             onMouseEnter={() => setHoveredItem('/inventory/stock-usage')}
             onMouseLeave={() => setHoveredItem(null)}
           >
@@ -130,7 +164,11 @@ const SidebarMenu: React.FC = () => {
 
           <Link
             to="/inventory/maintenance"
-            style={menuItemStyle('/inventory/maintenance')}
+            style={{
+              ...menuItemStyle('/inventory/maintenance'),
+              padding: '8px 12px',
+              fontSize: '14px'
+            }}
             onMouseEnter={() => setHoveredItem('/inventory/maintenance')}
             onMouseLeave={() => setHoveredItem(null)}
           >

@@ -120,9 +120,8 @@ const InventoryDashboard: React.FC = () => {
   ];
 
   return (
-    
-    <div style={{ padding: 24 }}>
-  <Row gutter={[16, 16]}>
+    <div style={{ padding: 16 }}>
+      <Row gutter={[12, 12]}>
     <Col span={12}>
       <Card title="Weekly Usage by Item Category">
         <ResponsiveContainer width="100%" height={300}>
@@ -164,14 +163,15 @@ const InventoryDashboard: React.FC = () => {
         </Col>
 
         <Col span={12}>
-          <Card title="Stock Levels vs Reorder Thresholds">
+          <Card title="Stock Levels vs Reorder Thresholds" size="small">
             {reorderThresholds.map((item) => (
-              <div key={item.name} style={{ marginBottom: 12 }}>
-                <div style={{ marginBottom: 4 }}>{item.name}</div>
+              <div key={item.name} style={{ marginBottom: 8 }}>
+                <div style={{ marginBottom: 4, fontSize: 12 }}>{item.name}</div>
                 <Progress
                   percent={item.percent}
                   status="active"
                   strokeColor={{ from: "#ff4d4f", to: "#faad14" }}
+                  size="small"
                 />
               </div>
             ))}
@@ -202,12 +202,17 @@ const InventoryDashboard: React.FC = () => {
         </Col>
 
         <Col span={24}>
-          <Card title="Inventory Table">
-            <Table columns={columns} dataSource={stockData} pagination={false} />
+          <Card title="Inventory Table" size="small">
+            <Table 
+              columns={columns} 
+              dataSource={stockData} 
+              pagination={false} 
+              size="small"
+            />
           </Card>
         </Col>
       </Row>
-    // </div>
+    </div>
   );
 };
 

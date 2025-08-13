@@ -145,6 +145,8 @@ import SidebarLayout from './pages/SidebarLayout';
 import InventoryStockUsage from './components/InventoryStockUsage';
 import InventoryDashboard from './components/InventoryDashboard';
 import MaintenanceInventory from './components/MaintenanceInventory';
+import ManageCategories from './components/ManageCategories';
+import ManageItems from './components/ManageItems';
 import Dashboard from './components/Dashboard';
 import LoginPage from './components/LoginPage';
 import './App.css';
@@ -167,6 +169,8 @@ const App: React.FC = () => {
               <Route path="dashboard" element={<Dashboard />} />
 
               {/* Inventory pages */}
+              <Route path="inventory/categories" element={<ManageCategories />} />
+              <Route path="inventory/items" element={<ManageItems />} />
               <Route path="inventory" element={<InventoryDashboard />} />
               <Route path="inventory/stock-usage" element={<InventoryStockUsage />} />
               <Route path="inventory/maintenance" element={<MaintenanceInventory />} />
