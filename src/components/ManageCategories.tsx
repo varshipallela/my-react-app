@@ -136,12 +136,12 @@ const ManageCategories: React.FC = () => {
   ];
 
   return (
-    <div style={{ padding: "16px" }}>
+    <div style={{ padding: "16px", width: "1200px"}}>
       {/* Header */}
       <Row justify="space-between" align="middle" style={{ marginBottom: 16 }}>
         <Col>
           <Title level={3} style={{ margin: 0, display: "flex", alignItems: "center" }}>
-            <AppstoreOutlined style={{ marginRight: 8, color: "#1890ff" }} />
+            <AppstoreOutlined style={{ marginRight: 8, color: "#1890ff" , fontWeight: "bold"}} />
             Manage Categories
           </Title>
         </Col>
@@ -153,7 +153,9 @@ const ManageCategories: React.FC = () => {
           <Card 
             size="small"
             style={{
-              background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+              // background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+background: "linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)",
+
               color: "white",
               borderRadius: 8
             }}
@@ -161,11 +163,9 @@ const ManageCategories: React.FC = () => {
           >
             <Row align="middle">
               <Col>
-                <AppstoreOutlined style={{ fontSize: 24, marginRight: 12 }} />
-              </Col>
-              <Col>
-                <div style={{ fontSize: 16, fontWeight: "bold" }}>Total Categories</div>
-                <div style={{ fontSize: 24, fontWeight: "bold" }}>{data.length}</div>
+                <AppstoreOutlined style={{ fontSize: 35, marginRight: 12 }} />
+                <div style={{ fontSize: 25, fontWeight: "bold" }}>Total Categories</div>
+                <div style={{ fontSize: 30, fontWeight: "bold" }}>{data.length}</div>
               </Col>
             </Row>
           </Card>

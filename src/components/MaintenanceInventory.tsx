@@ -108,7 +108,7 @@ const MaintenanceInventory: React.FC = () => {
   ];
 
   return (
-    <div style={{ padding: 16 }}>
+    <div style={{ padding: 16, width: "1200px"}}>
       {/* Header */}
       <Row justify="space-between" align="middle" style={{ marginBottom: 16 }}>
         <Col>

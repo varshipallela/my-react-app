@@ -257,12 +257,12 @@ const ManageItems: React.FC = () => {
   const outOfStockCount = data.filter(item => item.status === 'Out of Stock').length;
 
   return (
-    <div style={{ padding: "16px" }}>
+    <div style={{ padding: "16px", width: "1200px"}}>
       {/* Header */}
       <Row justify="space-between" align="middle" style={{ marginBottom: 16 }}>
         <Col>
           <Title level={3} style={{ margin: 0, display: "flex", alignItems: "center" }}>
-            <InboxOutlined style={{ marginRight: 8, color: "#1890ff" }} />
+            <InboxOutlined style={{ marginRight: 8, color: "#1890ff" , fontWeight: "bold"}} />
             Manage Items
           </Title>
         </Col>
@@ -281,9 +281,9 @@ const ManageItems: React.FC = () => {
             bodyStyle={{ padding: "12px" }}
           >
             <div style={{ textAlign: "center" }}>
-              <InboxOutlined style={{ fontSize: 20, marginBottom: 4 }} />
-              <div style={{ fontSize: 12, opacity: 0.9 }}>Total Items</div>
-              <div style={{ fontSize: 20, fontWeight: "bold" }}>{data.length}</div>
+              <InboxOutlined style={{ fontSize: 35, marginBottom: 4 }} />
+              <div style={{ fontSize: 25, fontWeight: "bold", opacity: 0.9 }}>Total Items</div>
+              <div style={{ fontSize: 30, fontWeight: "bold" }}>{data.length}</div>
             </div>
           </Card>
         </Col>
@@ -298,9 +298,9 @@ const ManageItems: React.FC = () => {
             bodyStyle={{ padding: "12px" }}
           >
             <div style={{ textAlign: "center" }}>
-              <CheckCircleOutlined style={{ fontSize: 20, marginBottom: 4 }} />
-              <div style={{ fontSize: 12, opacity: 0.9 }}>In Stock</div>
-              <div style={{ fontSize: 20, fontWeight: "bold" }}>{inStockCount}</div>
+              <CheckCircleOutlined style={{ fontSize: 35, marginBottom: 4 }} />
+              <div style={{ fontSize: 25, fontWeight: "bold", opacity: 0.9 }}>In Stock</div>
+              <div style={{ fontSize: 30, fontWeight: "bold" }}>{inStockCount}</div>
             </div>
           </Card>
         </Col>
@@ -315,9 +315,9 @@ const ManageItems: React.FC = () => {
             bodyStyle={{ padding: "12px" }}
           >
             <div style={{ textAlign: "center" }}>
-              <ExclamationCircleOutlined style={{ fontSize: 20, marginBottom: 4 }} />
-              <div style={{ fontSize: 12, opacity: 0.9 }}>Low Stock</div>
-              <div style={{ fontSize: 20, fontWeight: "bold" }}>{lowStockCount}</div>
+              <ExclamationCircleOutlined style={{ fontSize: 35, marginBottom: 4 }} />
+              <div style={{ fontSize: 25, fontWeight: "bold", opacity: 0.9 }}>Low Stock</div>
+              <div style={{ fontSize: 30, fontWeight: "bold" }}>{lowStockCount}</div>
             </div>
           </Card>
         </Col>
@@ -325,16 +325,16 @@ const ManageItems: React.FC = () => {
           <Card 
             size="small"
             style={{
-              background: "linear-gradient(135deg, #fc466b 0%, #3f5efb 100%)",
+              background: "linear-gradient(135deg, orange 0%, gray 100%)",
               color: "white",
               borderRadius: 8
             }}
             bodyStyle={{ padding: "12px" }}
           >
             <div style={{ textAlign: "center" }}>
-              <CloseCircleOutlined style={{ fontSize: 20, marginBottom: 4 }} />
-              <div style={{ fontSize: 12, opacity: 0.9 }}>Out of Stock</div>
-              <div style={{ fontSize: 20, fontWeight: "bold" }}>{outOfStockCount}</div>
+              <CloseCircleOutlined style={{ fontSize: 35, marginBottom: 4 }} />
+              <div style={{ fontSize: 25, fontWeight: "bold", opacity: 0.9 }}>Out of Stock</div>
+              <div style={{ fontSize: 30, fontWeight: "bold" }}>{outOfStockCount}</div>
             </div>
           </Card>
         </Col>
@@ -354,10 +354,10 @@ const ManageItems: React.FC = () => {
         <Col>
           <Select
             placeholder="Filter by Category"
-            value={categoryFilter}
+            value={categoryFilter  || undefined}
             onChange={setCategoryFilter}
             allowClear
-            style={{ width: 150 }}
+            style={{ width: 200 }}
           >
             {categories.map(category => (
               <Option key={category} value={category}>{category}</Option>
@@ -367,7 +367,7 @@ const ManageItems: React.FC = () => {
         <Col>
           <Select
             placeholder="Filter by Status"
-            value={statusFilter}
+            value={statusFilter  || undefined}
             onChange={setStatusFilter}
             allowClear
             style={{ width: 130 }}
