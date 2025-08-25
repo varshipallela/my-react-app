@@ -148,29 +148,31 @@ const ManageCategories: React.FC = () => {
       </Row>
 
       {/* Stats Card */}
-      <Row style={{ marginBottom: 16 }}>
-        <Col span={24}>
-          <Card 
-            size="small"
-            style={{
-              // background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-background: "linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)",
+     <Row style={{ marginBottom: 16 }}>
+  <Col span={24}>
+    <Card
+      size="small"
+      style={{
+ background: "linear-gradient(135deg, lightgreen, #81C784)",
 
-              color: "white",
-              borderRadius: 8
-            }}
-            bodyStyle={{ padding: "16px" }}
-          >
-            <Row align="middle">
-              <Col>
-                <AppstoreOutlined style={{ fontSize: 35, marginRight: 12 }} />
-                <div style={{ fontSize: 25, fontWeight: "bold" }}>Total Categories</div>
-                <div style={{ fontSize: 30, fontWeight: "bold" }}>{data.length}</div>
-              </Col>
-            </Row>
-          </Card>
+
+        color: "white",
+        borderRadius: 8,
+        textAlign: "center" // center text horizontally
+      }}
+      bodyStyle={{ padding: "24px" }}
+    >
+      <Row justify="center" align="middle">
+        <Col>
+          <AppstoreOutlined style={{ fontSize: 40, marginBottom: 8 }} />
+          <div style={{ fontSize: 35, fontWeight: "bold" }}>Total Categories</div>
+          <div style={{ fontSize: 40, fontWeight: "bold" }}>{data.length}</div>
         </Col>
       </Row>
+    </Card>
+  </Col>
+</Row>
+
 
       {/* Search and Add */}
       <Row gutter={16} style={{ marginBottom: 16 }}>
